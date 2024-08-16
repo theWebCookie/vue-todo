@@ -13,8 +13,8 @@ export default {
 .header {
   position: relative;
   background-image: url('../../assets/header.jpg');
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: -250px -370px;
   width: 100%;
   height: 450px;
 }
