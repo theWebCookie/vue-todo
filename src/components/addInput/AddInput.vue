@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.inputWrapper">
     <input type="checkbox" disabled :class="$style.checkBox" />
-    <input type="text" placeholder="Add your activity" :class="$style.searchBar" v-model="inputValue" @keyup.enter="addActivity" />
+    <input type="text" placeholder="Add your task" :class="$style.searchBar" v-model="inputValue" @keyup.enter="addTask" />
   </div>
 </template>
 
@@ -14,9 +14,16 @@ export default {
     };
   },
   methods: {
-    addActivity() {
-      console.log(this.inputValue);
-      this.inputValue = '';
+    addTask() {
+      if (this.inputValue.trim()) {
+        const task = {
+          id: Date.now(),
+          title: this.inputValue,
+          completed: false,
+        };
+        this.$store.dispatch('addTask', task);
+        this.inputValue = '';
+      }
     },
   },
 };
