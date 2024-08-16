@@ -1,6 +1,7 @@
 <template>
   <ul :class="$style.list">
-    <TaskItem v-for="task in tasks" :key="task.id" :task="task" :toggle-task="toggleTask" />
+    <li v-if="!tasks.length" :class="$style.noTasks">No tasks yet</li>
+    <TaskItem v-for="task in tasks" :key="task.id" :task="task" />
   </ul>
 </template>
 
@@ -12,19 +13,9 @@ export default {
   components: {
     TaskItem,
   },
-  props: {
-    tasks: {
-      type: Array,
-      required: true,
-    },
-  },
-  methods: {
-    toggleTask(taskId) {
-      const task = this.tasks.find((t) => t.id === taskId);
-      if (task) {
-        task.completed = !task.completed;
-        console.log(this.tasks);
-      }
+  computed: {
+    tasks() {
+      return this.$store.state.tasks;
     },
   },
 };
@@ -39,5 +30,11 @@ export default {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   box-shadow: 0px 38px 12px 0px rgb(120, 120, 120);
+}
+
+.noTasks {
+  padding: 10px;
+  text-align: center;
+  color: #b0b0b0;
 }
 </style>

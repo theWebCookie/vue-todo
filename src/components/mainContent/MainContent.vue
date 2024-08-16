@@ -19,8 +19,8 @@
       </svg>
     </div>
     <AddInput />
-    <TaskList :tasks="tasks" />
-    <ListControls :tasks="tasks" :tasksAmount="tasksCount()" />
+    <TaskList />
+    <ListControls />
   </div>
 </template>
 
@@ -35,20 +35,6 @@ export default {
     AddInput,
     TaskList,
     ListControls,
-  },
-  data() {
-    return {
-      tasks: [
-        { id: 1, title: 'Learn Vue.js', completed: false },
-        { id: 2, title: 'Learn React.js', completed: false },
-        { id: 3, title: 'Learn Angular.js', completed: false },
-      ],
-    };
-  },
-  methods: {
-    tasksCount() {
-      return this.tasks.filter((task) => !task.completed).length;
-    },
   },
 };
 </script>
