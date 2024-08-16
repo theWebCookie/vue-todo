@@ -1,17 +1,17 @@
 <template>
   <div :class="$style.controls">
     <div>
-      <span v-if="tasksAmount === 0">No items left</span>
-      <span v-else-if="tasksAmount === 1">1 item left</span>
-      <span v-else>{{ tasksAmount }} items left</span>
+      <span v-if="tasksLeft === 0">No tasks left</span>
+      <span v-else-if="tasksLeft === 1">1 task left</span>
+      <span v-else>{{ tasksLeft }} tasks left</span>
     </div>
     <div :class="$style.filterButtons">
-      <button>All</button>
-      <button>Active</button>
-      <button>Completed</button>
+      <button @click="filterTasks('all')">All</button>
+      <button @click="filterTasks('active')">Active</button>
+      <button @click="filterTasks('completed')">Completed</button>
     </div>
     <div :class="$style.clearButton">
-      <button>Clear Completed</button>
+      <button @click="clearCompleted">Clear Completed</button>
     </div>
   </div>
 </template>
@@ -19,14 +19,17 @@
 <script>
 export default {
   name: 'ListControls',
-  props: {
-    tasksAmount: {
-      type: Number,
-      required: true,
+  computed: {
+    tasksLeft() {
+      return this.$store.getters.tasksLeft;
     },
-    tasks: {
-      type: Array,
-      required: true,
+  },
+  methods: {
+    filterTasks(filter) {
+      this.$store.dispatch('setFilter', filter);
+    },
+    clearCompleted() {
+      this.$store.dispatch('clearCompletedTasks');
     },
   },
 };

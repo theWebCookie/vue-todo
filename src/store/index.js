@@ -17,6 +17,12 @@ const store = createStore({
     removeTask(state, taskId) {
       state.tasks = state.tasks.filter((task) => task.id !== taskId);
     },
+    setFilter(state, filter) {
+      state.filter = filter;
+    },
+    clearCompletedTasks(state) {
+      state.tasks = state.tasks.filter((task) => !task.completed);
+    },
   },
   actions: {
     addTask({ commit }, task) {
@@ -28,11 +34,20 @@ const store = createStore({
     removeTask({ commit }, taskId) {
       commit('removeTask', taskId);
     },
+    setFilter({ commit }, filter) {
+      commit('setFilter', filter);
+    },
+    clearCompletedTasks({ commit }) {
+      commit('clearCompletedTasks');
+    },
   },
   getters: {
-    allTasks: (state) => state.tasks,
-    completedTasks: (state) => state.tasks.filter((task) => task.completed),
-    pendingTasks: (state) => state.tasks.filter((task) => !task.completed),
+    filteredTasks: (state) => {
+      if (state.filter === 'all') return state.tasks;
+      else if (state.filter === 'active') return state.tasks.filter((task) => !task.completed);
+      else if (state.filter === 'completed') return state.tasks.filter((task) => task.completed);
+    },
+    tasksLeft: (state) => state.tasks.filter((task) => !task.completed).length,
   },
 });
 
