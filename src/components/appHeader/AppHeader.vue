@@ -12,7 +12,7 @@ export default {
 <style module>
 .header {
   position: relative;
-  background-image: url('../assets//header.jpg');
+  background-image: url('../../assets/header.jpg');
   background-repeat: no-repeat;
   background-position: -250px -370px;
   width: 100%;
