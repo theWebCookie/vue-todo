@@ -25,9 +25,9 @@
 </template>
 
 <script>
-import AddInput from '../addInput/AddInput.vue';
-import TaskList from '../tasks/TaskList.vue';
-import ListControls from '../ListControls/ListControls.vue';
+import AddInput from '../molecules/AddInput.vue';
+import TaskList from '../organisms/TaskList.vue';
+import ListControls from '../molecules/ListControls.vue';
 
 export default {
   name: 'MainContent',

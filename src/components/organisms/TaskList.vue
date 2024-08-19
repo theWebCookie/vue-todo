@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import TaskItem from './TaskItem.vue';
+import TaskItem from '../molecules/TaskItem.vue';
 
 export default {
   name: 'TaskList',

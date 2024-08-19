@@ -6,22 +6,34 @@
       <span v-else>{{ tasksLeft }} tasks left</span>
     </div>
     <div :class="$style.filterButtons">
-      <button @click="filterTasks('all')">All</button>
-      <button @click="filterTasks('active')">Active</button>
-      <button @click="filterTasks('completed')">Completed</button>
+      <AppButton v-for="filter in filters" :key="filter.name" :customClass="$style.filterButton" @click="filterTasks(filter.value)">
+        {{ filter.name }}
+      </AppButton>
     </div>
     <div :class="$style.clearButton">
-      <button @click="clearCompleted">Clear Completed</button>
+      <AppButton @click="clearCompleted" :customClass="$style.clearButtonStyle"> Clear Completed </AppButton>
     </div>
   </div>
 </template>
 
 <script>
+import AppButton from '../atoms/AppButton.vue';
+
 export default {
   name: 'ListControls',
+  components: {
+    AppButton,
+  },
   computed: {
     tasksLeft() {
       return this.$store.getters.tasksLeft;
+    },
+    filters() {
+      return [
+        { name: 'All', value: 'all' },
+        { name: 'Active', value: 'active' },
+        { name: 'Completed', value: 'completed' },
+      ];
     },
   },
   methods: {
@@ -47,17 +59,11 @@ export default {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 
-  .filterButtons button,
-  .clearButton button {
-    all: unset;
-    cursor: pointer;
-    transition: 0.3s;
-
-    &:hover {
-      color: #007bff;
-    }
+  .filterButtons {
+    display: flex;
   }
-  .filterButtons button {
+
+  .filterButton {
     margin: 0 5px;
   }
 }
