@@ -23,7 +23,7 @@ export default {
   display: flex;
   gap: 10px;
   background-color: #fff;
-  padding: 10px 0;
+  padding: 10px 10px;
   margin-bottom: 20px;
   border-radius: 5px;
 }
