@@ -1,28 +1,34 @@
 import { createStore } from 'vuex';
 
+const defaultState = {
+  tasks: JSON.parse(localStorage.getItem('tasks')) || [],
+  filter: 'all',
+};
+
 const store = createStore({
-  state() {
-    return {
-      tasks: [],
-      filter: 'all',
-    };
-  },
+  state: defaultState,
   mutations: {
     addTask(state, task) {
       state.tasks.push(task);
+      localStorage.setItem('tasks', JSON.stringify(state.tasks));
     },
     toggleTask(state, taskId) {
       const task = state.tasks.find((task) => task.id === taskId);
-      if (task) task.completed = !task.completed;
+      if (task) {
+        task.completed = !task.completed;
+        localStorage.setItem('tasks', JSON.stringify(state.tasks));
+      }
     },
     removeTask(state, taskId) {
       state.tasks = state.tasks.filter((task) => task.id !== taskId);
+      localStorage.setItem('tasks', JSON.stringify(state.tasks));
     },
     setFilter(state, filter) {
       state.filter = filter;
     },
     clearCompletedTasks(state) {
       state.tasks = state.tasks.filter((task) => !task.completed);
+      localStorage.setItem('tasks', JSON.stringify(state.tasks));
     },
   },
   actions: {
