@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "prepare": "husky"
   },
   "dependencies": {
     "core-js": "^3.8.3",
@@ -49,5 +50,15 @@
     "last 2 versions",
     "not dead",
     "not ie 11"
-  ]
+  ],
+  "lint-staged": {
+    "src/**/*.{js,jsx,vue}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "src/**/*.{css,scss}": [
+      "stylelint --fix",
+      "git add"
+    ]
+  }
 }
