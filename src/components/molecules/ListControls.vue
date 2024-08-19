@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import AppButton from '../atoms/AppButton.vue';
 
 export default {
@@ -23,9 +24,7 @@ export default {
     AppButton,
   },
   computed: {
-    tasksLeft() {
-      return this.$store.getters.tasksLeft;
-    },
+    ...mapGetters(['tasksLeft']),
     filters() {
       return [
         { name: 'All', value: 'all' },
