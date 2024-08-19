@@ -1,39 +1,42 @@
 <template>
   <li :class="$style.taskItem">
-    <input type="checkbox" :id="task.id" :checked="task.completed" @change="handleCheckBoxChange" />
+    <InputCheckbox :checked="task.completed" :disabled="false" :id="task.id" />
     <div :class="$style.taskName">
       <label :for="task.id">{{ task.title }}</label>
-      <button :class="$style.deleteButton">X</button>
+      <AppButton :customClass="$style.deleteButton" @click="removeTask(task.id)"> X </AppButton>
     </div>
   </li>
 </template>
 
 <script>
+import AppButton from '../atoms/AppButton.vue';
+import InputCheckbox from '../atoms/InputCheckbox.vue';
+
 export default {
   name: 'TaskItem',
+  components: {
+    InputCheckbox,
+    AppButton,
+  },
   props: {
     task: {
       type: Object,
       required: true,
     },
-    toggleTask: {
-      type: Function,
-      required: true,
-    },
   },
   methods: {
-    handleCheckBoxChange() {
-      this.toggleTask(this.task.id);
+    removeTask(taskId) {
+      this.$store.dispatch('removeTask', taskId);
     },
   },
 };
 </script>
 
-<style module>
+<style module lang="scss">
 .taskItem {
   display: flex;
-  gap: 10px;
-  padding: 15px 10px;
+  gap: $spacing-small;
+  padding: $spacing-medium;
   border-bottom: 1px solid #ccc;
 
   .taskName {
@@ -41,16 +44,14 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    .deleteButton {
-      all: unset;
-      cursor: pointer;
-      visibility: hidden;
-    }
   }
 
   &:hover .deleteButton {
     visibility: visible;
   }
+}
+
+.deleteButton {
+  visibility: hidden;
 }
 </style>
