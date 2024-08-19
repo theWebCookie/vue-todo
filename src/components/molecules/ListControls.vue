@@ -1,9 +1,7 @@
 <template>
   <div :class="$style.controls">
     <div>
-      <span v-if="tasksLeft === 0">No tasks left</span>
-      <span v-else-if="tasksLeft === 1">1 task left</span>
-      <span v-else>{{ tasksLeft }} tasks left</span>
+      <span>{{ taskCountMessage }}</span>
     </div>
     <div :class="$style.filterButtons">
       <AppButton v-for="filter in filters" :key="filter.name" :customClass="$style.filterButton" @click="filterTasks(filter.value)">
@@ -34,6 +32,15 @@ export default {
         { name: 'Active', value: 'active' },
         { name: 'Completed', value: 'completed' },
       ];
+    },
+    taskCountMessage() {
+      if (this.tasksLeft === 0) {
+        return 'No tasks left';
+      } else if (this.tasksLeft === 1) {
+        return '1 task left';
+      } else {
+        return `${this.tasksLeft} tasks left`;
+      }
     },
   },
   methods: {
