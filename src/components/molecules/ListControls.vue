@@ -59,12 +59,12 @@ export default {
   display: flex;
   align-items: center;
   padding: 10px;
-  background-color: #fff;
+  background-color: $white-color;
   font-size: 14px;
   justify-content: space-between;
-  color: #b0b0b0;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  color: $light-gray-color;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
 
   .filterButtons {
     display: flex;

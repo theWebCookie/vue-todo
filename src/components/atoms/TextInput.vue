@@ -32,10 +32,10 @@ export default {
 };
 </script>
 
-<style module>
+<style module lang="scss">
 .searchBar {
   width: 100%;
-  padding: 10px 0;
+  padding: $spacing-small 0;
   font-size: 16px;
   border: none;
 }

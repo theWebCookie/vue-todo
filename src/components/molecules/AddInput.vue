@@ -18,13 +18,13 @@ export default {
 };
 </script>
 
-<style module>
+<style module lang="scss">
 .inputWrapper {
   display: flex;
-  gap: 10px;
-  background-color: #fff;
-  padding: 10px 10px;
-  margin-bottom: 20px;
-  border-radius: 5px;
+  gap: $spacing-small;
+  background-color: $white-color;
+  padding: $spacing-small;
+  margin-bottom: $spacing-large;
+  border-radius: $border-radius;
 }
 </style>

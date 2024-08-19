@@ -35,8 +35,8 @@ export default {
 <style module lang="scss">
 .taskItem {
   display: flex;
-  gap: 10px;
-  padding: 15px 10px;
+  gap: $spacing-small;
+  padding: $spacing-medium;
   border-bottom: 1px solid #ccc;
 
   .taskName {

@@ -52,8 +52,8 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 20px;
-    color: white;
+    padding-bottom: $spacing-large;
+    color: $white-color;
 
     .heading {
       text-transform: uppercase;
@@ -61,7 +61,7 @@ export default {
     }
 
     .moon {
-      fill: white;
+      fill: $white-color;
     }
   }
 }

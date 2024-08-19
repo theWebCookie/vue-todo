@@ -29,8 +29,8 @@ export default {
 };
 </script>
 
-<style module>
+<style module lang="scss">
 .checkBox {
-  margin-left: 10px;
+  margin-left: $spacing-small;
 }
 </style>
