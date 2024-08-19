@@ -39,7 +39,7 @@ export default {
 };
 </script>
 
-<style module>
+<style module lang="scss">
 .layout {
   position: absolute;
   top: 190px;
@@ -47,22 +47,22 @@ export default {
   transform: translateX(-50%);
   max-width: 450px;
   width: 100%;
-}
 
-.title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 20px;
-  color: white;
-}
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    color: white;
 
-.moon {
-  fill: white;
-}
+    .heading {
+      text-transform: uppercase;
+      letter-spacing: 15px;
+    }
 
-.heading {
-  text-transform: uppercase;
-  letter-spacing: 15px;
+    .moon {
+      fill: white;
+    }
+  }
 }
 </style>

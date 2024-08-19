@@ -21,7 +21,7 @@ export default {
 };
 </script>
 
-<style module>
+<style module lang="scss">
 .list {
   list-style: none;
   padding: 0;
@@ -30,11 +30,11 @@ export default {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   box-shadow: 0px 38px 12px 0px rgb(120, 120, 120);
-}
 
-.noTasks {
-  padding: 10px;
-  text-align: center;
-  color: #b0b0b0;
+  .noTasks {
+    padding: 10px;
+    text-align: center;
+    color: #b0b0b0;
+  }
 }
 </style>

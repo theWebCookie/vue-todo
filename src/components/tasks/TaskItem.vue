@@ -28,7 +28,7 @@ export default {
 };
 </script>
 
-<style module>
+<style module lang="scss">
 .taskItem {
   display: flex;
   gap: 10px;

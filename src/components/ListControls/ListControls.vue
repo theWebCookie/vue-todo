@@ -35,7 +35,7 @@ export default {
 };
 </script>
 
-<style module>
+<style module lang="scss">
 .controls {
   display: flex;
   align-items: center;

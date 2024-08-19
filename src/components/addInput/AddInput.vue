@@ -29,7 +29,7 @@ export default {
 };
 </script>
 
-<style module>
+<style module lang="scss">
 .inputWrapper {
   display: flex;
   gap: 10px;
@@ -37,16 +37,16 @@ export default {
   padding: 10px 0;
   margin-bottom: 20px;
   border-radius: 5px;
-}
 
-.checkBox {
-  margin-left: 10px;
-}
+  .checkBox {
+    margin-left: 10px;
+  }
 
-.searchBar {
-  width: 100%;
-  padding: 10px 0;
-  font-size: 16px;
-  border: none;
+  .searchBar {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    border: none;
+  }
 }
 </style>
