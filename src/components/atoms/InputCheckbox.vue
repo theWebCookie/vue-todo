@@ -22,9 +22,6 @@ export default {
     toggleTask(taskId) {
       this.$store.dispatch('toggleTask', taskId);
     },
-    removeTask(taskId) {
-      this.$store.dispatch('removeTask', taskId);
-    },
   },
 };
 </script>
