@@ -8,7 +8,7 @@ module.exports = {
   globals: {
     'vue-jest': {
       resources: {
-        scss: ['./tests/css-mocks.scss'],
+        scss: ['./__mocks__/css-mocks.scss'],
       },
     },
   },
