@@ -1,5 +1,5 @@
 <template>
-  <li :class="$style.taskItem">
+  <li :class="$style.taskItem" @click="toggleCheckbox">
     <InputCheckbox :checked="task.completed" :disabled="false" :id="task.id" />
     <div :class="$style.taskName">
       <label :for="task.id">{{ task.title }}</label>
@@ -28,6 +28,9 @@ export default {
     removeTask(taskId) {
       this.$store.dispatch('removeTask', taskId);
     },
+    toggleCheckbox() {
+      this.$store.dispatch('toggleTask', this.task.id);
+    },
   },
 };
 </script>
@@ -38,6 +41,7 @@ export default {
   gap: $spacing-small;
   padding: $spacing-medium;
   border-bottom: 1px solid #ccc;
+  cursor: pointer;
 
   .taskName {
     width: 100%;
@@ -46,8 +50,11 @@ export default {
     align-items: center;
   }
 
-  &:hover .deleteButton {
-    visibility: visible;
+  &:hover {
+    background-color: $hover-color;
+    .deleteButton {
+      visibility: visible;
+    }
   }
 }
 

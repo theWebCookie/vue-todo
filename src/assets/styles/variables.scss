@@ -2,9 +2,12 @@
 $primary-color: #007bff;
 $white-color: #fff;
 $light-gray-color: #b0b0b0;
+$hover-color: #e4e4e4;
 $border-gray-color: #ccc;
-$header-gradient-start: rgb(168 0 168 / 70%);
-$header-gradient-end: rgb(0 51 161 / 70%);
+$header-gradient-angle: 142deg;
+$header-gradient-start: rgb(168 0 168 / 80%);
+$header-gradient-middle: rgb(153 90 194 / 80%);
+$header-gradient-end: rgb(0 51 161 / 80%);
 
 // Spacing Variables
 $spacing-small: 10px;
