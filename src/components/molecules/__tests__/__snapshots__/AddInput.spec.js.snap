@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddInput.vue renders correctly and matches the snapshot 1`] = `
+<div
+  class="inputWrapper"
+>
+  <input-checkbox-stub
+    checked="false"
+    disabled="true"
+  />
+  <text-input-stub
+    placeholder="Add your task"
+  />
+</div>
+`;
