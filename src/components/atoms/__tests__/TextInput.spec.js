@@ -2,6 +2,7 @@ import { shallowMount } from '@vue/test-utils';
 import { createStore } from 'vuex';
 import { describe, it, expect, jest, beforeEach } from '@jest/globals';
 import TextInput from '../TextInput.vue';
+import { render, fireEvent } from '@testing-library/vue';
 
 describe('TextInput.vue', () => {
   let store;
@@ -73,5 +74,18 @@ describe('TextInput.vue', () => {
     });
 
     expect(wrapper.vm.inputValue).toBe('');
+  });
+
+  it('does not add a task if input is empty or whitespace', async () => {
+    const { getByPlaceholderText } = render(TextInput, {
+      global: {
+        plugins: [store],
+      },
+    });
+
+    const input = getByPlaceholderText('Add your task');
+    await fireEvent.update(input, '   ');
+    await fireEvent.keyUp(input, { key: 'Enter', code: 'Enter' });
+    expect(actions.addTask).not.toHaveBeenCalled();
   });
 });
