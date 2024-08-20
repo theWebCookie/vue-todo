@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TaskItem.vue renders correctly and matches the snapshot 1`] = `
+<li
+  class="taskItem"
+>
+  <input-checkbox-stub
+    checked="false"
+    disabled="false"
+    id="1"
+  />
+  <div
+    class="taskName"
+  >
+    <label
+      for="1"
+    >
+      Task 1
+    </label>
+    <app-button-stub
+      customclass="deleteButton"
+    />
+  </div>
+</li>
+`;
+
+exports[`TaskItem.vue renders with checked state 1`] = `
+<li
+  class="taskItem"
+>
+  <input-checkbox-stub
+    checked="true"
+    disabled="false"
+    id="1"
+  />
+  <div
+    class="taskName"
+  >
+    <label
+      for="1"
+    >
+      Task 1
+    </label>
+    <app-button-stub
+      customclass="deleteButton"
+    />
+  </div>
+</li>
+`;
