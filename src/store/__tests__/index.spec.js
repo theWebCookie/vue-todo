@@ -57,4 +57,43 @@ describe('Vuex Store', () => {
     expect(state.tasks).toEqual([task2]);
     expect(JSON.parse(localStorage.getItem('tasks'))).toEqual([task2]);
   });
+
+  it('actions - addTask', async () => {
+    const task = { id: 6, title: 'Action Task', completed: false };
+    await store.dispatch('addTask', task);
+    const state = store.state;
+    expect(state.tasks).toContainEqual(task);
+  });
+
+  it('actions - toggleTask', async () => {
+    const task = { id: 7, title: 'Action Task 2', completed: false };
+    await store.dispatch('addTask', task);
+    await store.dispatch('toggleTask', task.id);
+    const state = store.state;
+    expect(state.tasks.find((t) => t.id === task.id).completed).toBe(true);
+  });
+
+  it('actions - removeTask', async () => {
+    const task = { id: 8, title: 'Action Task 3', completed: false };
+    await store.dispatch('addTask', task);
+    await store.dispatch('removeTask', task.id);
+    const state = store.state;
+    expect(state.tasks).not.toContainEqual(task);
+  });
+
+  it('actions - setFilter', async () => {
+    await store.dispatch('setFilter', 'completed');
+    const state = store.state;
+    expect(state.filter).toBe('completed');
+  });
+
+  it('actions - clearCompletedTasks', async () => {
+    const task1 = { id: 9, title: 'Action Task 4', completed: true };
+    const task2 = { id: 10, title: 'Action Task 5', completed: false };
+    await store.dispatch('addTask', task1);
+    await store.dispatch('addTask', task2);
+    await store.dispatch('clearCompletedTasks');
+    const state = store.state;
+    expect(state.tasks).toEqual([task2]);
+  });
 });
