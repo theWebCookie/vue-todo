@@ -96,4 +96,22 @@ describe('Vuex Store', () => {
     const state = store.state;
     expect(state.tasks).toEqual([task2]);
   });
+
+  it('getters - filteredTasks', () => {
+    const task1 = { id: 11, title: 'Task 6', completed: true };
+    const task2 = { id: 12, title: 'Task 7', completed: false };
+    store.commit('addTask', task1);
+    store.commit('addTask', task2);
+    store.commit('setFilter', 'completed');
+    expect(store.getters.filteredTasks).toContainEqual(task1);
+    expect(store.getters.filteredTasks).not.toContainEqual(task2);
+  });
+
+  it('getters - tasksLeft', () => {
+    const task1 = { id: 13, title: 'Task 8', completed: true };
+    const task2 = { id: 14, title: 'Task 9', completed: false };
+    store.commit('addTask', task1);
+    store.commit('addTask', task2);
+    expect(store.getters.tasksLeft).toBe(1);
+  });
 });
