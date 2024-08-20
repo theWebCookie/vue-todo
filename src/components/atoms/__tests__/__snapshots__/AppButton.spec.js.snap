@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppButton.vue renders correctly and matches the snapshot 1`] = `
+<button
+  class="button custom-class"
+>
+  
+  Click Me
+  
+</button>
+`;
