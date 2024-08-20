@@ -1,6 +1,9 @@
 import { shallowMount } from '@vue/test-utils';
 import { describe, it, expect } from '@jest/globals';
 import TaskItem from '../TaskItem.vue';
+import { render, fireEvent } from '@testing-library/vue';
+import { createStore } from 'vuex';
+import { jest } from '@jest/globals';
 
 const styles = {
   taskItem: 'taskItem',
@@ -51,5 +54,31 @@ describe('TaskItem.vue', () => {
     expect(wrapper.classes()).toContain(styles.taskItem);
     expect(wrapper.props('task').title).toBe('Task 1');
     expect(wrapper.props('task').completed).toBe(true);
+  });
+
+  it('calls removeTask method when delete button is clicked', async () => {
+    const task = { id: 1, title: 'Test Task', completed: false };
+
+    let store;
+    let actions = {
+      removeTask: jest.fn(),
+    };
+
+    store = createStore({
+      actions,
+    });
+
+    const { getByText } = render(TaskItem, {
+      global: {
+        plugins: [store],
+      },
+      props: {
+        task,
+      },
+    });
+
+    const deleteButton = getByText('X');
+    await fireEvent.click(deleteButton);
+    expect(actions.removeTask).toHaveBeenCalledWith(expect.any(Object), 1);
   });
 });
