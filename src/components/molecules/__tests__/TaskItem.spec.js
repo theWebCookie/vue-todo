@@ -62,6 +62,7 @@ describe('TaskItem.vue', () => {
     let store;
     let actions = {
       removeTask: jest.fn(),
+      toggleTask: jest.fn(),
     };
 
     store = createStore({
