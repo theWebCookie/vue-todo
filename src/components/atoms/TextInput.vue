@@ -38,5 +38,6 @@ export default {
   padding: $spacing-small 0;
   font-size: 16px;
   border: none;
+  outline: none;
 }
 </style>
