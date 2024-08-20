@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TaskList.vue renders correctly with no tasks 1`] = `
+<ul
+  class="list"
+>
+  <li
+    class="noTasks"
+  >
+    No tasks yet
+  </li>
+  
+  
+</ul>
+`;
+
+exports[`TaskList.vue renders correctly with tasks 1`] = `
+<ul
+  class="list"
+>
+  <!--v-if-->
+  
+  <task-item-stub
+    task="[object Object]"
+  />
+  <task-item-stub
+    task="[object Object]"
+  />
+  
+</ul>
+`;

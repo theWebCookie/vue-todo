@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextInput.vue renders correctly and matches the snapshot 1`] = `
+<input
+  class="searchBar"
+  placeholder="Add new task"
+  type="text"
+/>
+`;

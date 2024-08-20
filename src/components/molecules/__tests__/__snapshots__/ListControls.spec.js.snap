@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListControls.vue renders correctly and matches the snapshot 1`] = `
+<div
+  class="controls"
+>
+  <div>
+    <span>
+      5 tasks left
+    </span>
+  </div>
+  <div
+    class="filterButtons"
+  >
+    
+    <app-button-stub
+      customclass="filterButton"
+    />
+    <app-button-stub
+      customclass="filterButton"
+    />
+    <app-button-stub
+      customclass="filterButton"
+    />
+    
+  </div>
+  <div
+    class=""
+  >
+    <app-button-stub
+      customclass=""
+    />
+  </div>
+</div>
+`;

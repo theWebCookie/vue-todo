@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputCheckbox.vue renders correctly and matches the snapshot 1`] = `
+<input
+  class="checkBox"
+  type="checkbox"
+/>
+`;
+
+exports[`InputCheckbox.vue renders with checked state 1`] = `
+<input
+  checked=""
+  class="checkBox"
+  type="checkbox"
+/>
+`;
+
+exports[`InputCheckbox.vue renders with disabled state 1`] = `
+<input
+  class="checkBox"
+  disabled=""
+  type="checkbox"
+/>
+`;
