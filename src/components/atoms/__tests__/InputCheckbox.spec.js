@@ -98,4 +98,26 @@ describe('InputCheckbox.vue', () => {
     await checkbox.setChecked(true);
     expect(actions.toggleTask).toHaveBeenCalledWith(expect.any(Object), 1);
   });
+
+  it('does not call toggleTask when checkbox is disabled', async () => {
+    const wrapper = shallowMount(InputCheckbox, {
+      global: {
+        plugins: [store],
+        mocks: {
+          $style: {
+            checkBox: 'checkBox',
+          },
+        },
+      },
+      props: {
+        checked: false,
+        disabled: true,
+        id: 1,
+      },
+    });
+
+    const checkbox = wrapper.find('input[type="checkbox"]');
+    await checkbox.setChecked(true);
+    expect(actions.toggleTask).not.toHaveBeenCalled();
+  });
 });
