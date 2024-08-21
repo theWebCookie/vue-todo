@@ -58,6 +58,17 @@ describe('Vuex Store', () => {
     expect(JSON.parse(localStorage.getItem('tasks'))).toEqual([task2]);
   });
 
+  it('mutations - updateTaskOrder', () => {
+    const task1 = { id: 4, title: 'Test Task 4', completed: true };
+    const task2 = { id: 5, title: 'Test Task 5', completed: false };
+    store.commit('addTask', task1);
+    store.commit('addTask', task2);
+    store.commit('updateTaskOrder', [task2, task1]);
+    const state = store.state;
+    expect(state.tasks).toEqual([task2, task1]);
+    expect(JSON.parse(localStorage.getItem('tasks'))).toEqual([task2, task1]);
+  });
+
   it('actions - addTask', async () => {
     const task = { id: 6, title: 'Action Task', completed: false };
     await store.dispatch('addTask', task);
@@ -95,6 +106,16 @@ describe('Vuex Store', () => {
     await store.dispatch('clearCompletedTasks');
     const state = store.state;
     expect(state.tasks).toEqual([task2]);
+  });
+
+  it('actions - updateTaskOrder', async () => {
+    const task1 = { id: 9, title: 'Action Task 4', completed: true };
+    const task2 = { id: 10, title: 'Action Task 5', completed: false };
+    await store.dispatch('addTask', task1);
+    await store.dispatch('addTask', task2);
+    await store.dispatch('updateTaskOrder', [task2, task1]);
+    const state = store.state;
+    expect(state.tasks).toEqual([task2, task1]);
   });
 
   it('getters - filteredTasks', () => {

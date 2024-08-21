@@ -1,5 +1,5 @@
 <template>
-  <li :class="[$style.taskItem, task.completed ? $style.taskCompleted : '']">
+  <li :class="[$style.taskItem, task.completed ? $style.taskCompleted : '']" draggable="true">
     <label :for="task.id" :class="$style.taskLabel">
       <InputCheckbox :checked="task.completed" :disabled="false" :id="task.id" />
       <div :class="$style.taskDescription">
@@ -40,14 +40,18 @@ export default {
 <style module lang="scss">
 .taskItem {
   border-bottom: 1px solid #ccc;
+  background-color: $white-color;
 
   &.taskCompleted {
-    text-decoration: line-through;
-    color: #b1b1b1;
+    .taskTitle {
+      text-decoration: line-through;
+      color: #b1b1b1;
+    }
   }
 
   &:hover {
     background-color: $hover-color;
+
     .deleteButton {
       visibility: visible;
     }
@@ -64,14 +68,13 @@ export default {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    width: 100%;
+  }
 
-    .taskTitle {
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      white-space: normal;
-      max-width: 350px;
-    }
+  .taskTitle {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 350px;
   }
 }
 

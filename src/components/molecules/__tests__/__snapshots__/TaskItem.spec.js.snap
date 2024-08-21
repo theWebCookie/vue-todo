@@ -3,6 +3,7 @@
 exports[`TaskItem.vue renders correctly and matches the snapshot 1`] = `
 <li
   class="taskItem"
+  draggable="true"
 >
   <label
     class="taskLabel"
@@ -31,7 +32,8 @@ exports[`TaskItem.vue renders correctly and matches the snapshot 1`] = `
 
 exports[`TaskItem.vue renders with checked state 1`] = `
 <li
-  class="taskItem"
+  class="taskItem taskCompleted"
+  draggable="true"
 >
   <label
     class="taskLabel"

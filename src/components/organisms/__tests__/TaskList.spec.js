@@ -1,7 +1,8 @@
 import { shallowMount } from '@vue/test-utils';
-import { describe, it, expect } from '@jest/globals';
+import { describe, it, expect, jest } from '@jest/globals';
 import { createStore } from 'vuex';
 import TaskList from '../TaskList.vue';
+import TaskItem from '../../molecules/TaskItem.vue';
 
 const styles = {
   list: 'list-class',
@@ -59,9 +60,26 @@ describe('TaskList.vue', () => {
         mocks: {
           $style: styles,
         },
+        stubs: {
+          TaskItem,
+        },
       },
     });
 
     expect(wrapper.element).toMatchSnapshot();
+    expect(wrapper.findAllComponents(TaskItem)).toHaveLength(2);
+  });
+
+  it('initializes sortable on mount', () => {
+    const spy = jest.spyOn(TaskList.methods, 'initializeDragAndDrop');
+    shallowMount(TaskList, {
+      global: {
+        plugins: [store],
+        mocks: {
+          $style: styles,
+        },
+      },
+    });
+    expect(spy).toHaveBeenCalled();
   });
 });
