@@ -30,7 +30,7 @@ export default {
   border-top-left-radius: $border-radius;
   border-top-right-radius: $border-radius;
   box-shadow: 0px 38px 12px 0px rgb(120, 120, 120);
-  max-height: 300px;
+  height: 250px;
   overflow-y: auto;
   overflow-x: hidden;
 
