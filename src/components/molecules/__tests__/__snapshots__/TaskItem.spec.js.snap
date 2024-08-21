@@ -4,23 +4,25 @@ exports[`TaskItem.vue renders correctly and matches the snapshot 1`] = `
 <li
   class="taskItem"
 >
-  <input-checkbox-stub
-    checked="false"
-    disabled="false"
-    id="1"
-  />
-  <div
-    class="taskName"
+  <label
+    for="1"
   >
-    <label
-      for="1"
-    >
-      Task 1
-    </label>
-    <app-button-stub
-      customclass="deleteButton"
+    <input-checkbox-stub
+      checked="false"
+      disabled="false"
+      id="1"
     />
-  </div>
+    <div
+      class="taskName"
+    >
+      <span>
+        Task 1
+      </span>
+      <app-button-stub
+        customclass="deleteButton"
+      />
+    </div>
+  </label>
 </li>
 `;
 
@@ -28,22 +30,24 @@ exports[`TaskItem.vue renders with checked state 1`] = `
 <li
   class="taskItem"
 >
-  <input-checkbox-stub
-    checked="true"
-    disabled="false"
-    id="1"
-  />
-  <div
-    class="taskName"
+  <label
+    for="1"
   >
-    <label
-      for="1"
-    >
-      Task 1
-    </label>
-    <app-button-stub
-      customclass="deleteButton"
+    <input-checkbox-stub
+      checked="true"
+      disabled="false"
+      id="1"
     />
-  </div>
+    <div
+      class="taskName"
+    >
+      <span>
+        Task 1
+      </span>
+      <app-button-stub
+        customclass="deleteButton"
+      />
+    </div>
+  </label>
 </li>
 `;

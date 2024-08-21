@@ -1,10 +1,12 @@
 <template>
-  <li :class="$style.taskItem" @click="toggleCheckbox">
-    <InputCheckbox :checked="task.completed" :disabled="false" :id="task.id" />
-    <div :class="$style.taskName">
-      <label :for="task.id">{{ task.title }}</label>
-      <AppButton :customClass="$style.deleteButton" @click="removeTask(task.id)"> X </AppButton>
-    </div>
+  <li :class="$style.taskItem">
+    <label :for="task.id">
+      <InputCheckbox :checked="task.completed" :disabled="false" :id="task.id" />
+      <div :class="$style.taskName">
+        <span>{{ task.title }}</span>
+        <AppButton :customClass="$style.deleteButton" @click="removeTask(task.id)"> X </AppButton>
+      </div>
+    </label>
   </li>
 </template>
 
@@ -37,11 +39,14 @@ export default {
 
 <style module lang="scss">
 .taskItem {
-  display: flex;
-  gap: $spacing-small;
-  padding: $spacing-medium;
   border-bottom: 1px solid #ccc;
-  cursor: pointer;
+
+  label {
+    display: flex;
+    gap: $spacing-small;
+    padding: $spacing-medium;
+    cursor: pointer;
+  }
 
   .taskName {
     width: 100%;
