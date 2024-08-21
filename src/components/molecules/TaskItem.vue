@@ -1,9 +1,9 @@
 <template>
   <li :class="$style.taskItem">
-    <label :for="task.id">
+    <label :for="task.id" :class="$style.taskLabel">
       <InputCheckbox :checked="task.completed" :disabled="false" :id="task.id" />
-      <div :class="$style.taskName">
-        <span>{{ task.title }}</span>
+      <div :class="$style.taskDescription">
+        <span :class="$style.taskTitle">{{ task.title }}</span>
         <AppButton :customClass="$style.deleteButton" @click="removeTask(task.id)"> X </AppButton>
       </div>
     </label>
@@ -41,29 +41,37 @@ export default {
 .taskItem {
   border-bottom: 1px solid #ccc;
 
-  label {
-    display: flex;
-    gap: $spacing-small;
-    padding: $spacing-medium;
-    cursor: pointer;
-  }
-
-  .taskName {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
   &:hover {
     background-color: $hover-color;
     .deleteButton {
       visibility: visible;
     }
   }
+
+  .taskLabel {
+    display: flex;
+    gap: $spacing-small;
+    padding: $spacing-medium;
+    cursor: pointer;
+  }
+
+  .taskDescription {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .taskTitle {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      white-space: normal;
+      max-width: 350px;
+    }
+  }
 }
 
 .deleteButton {
   visibility: hidden;
+  margin-right: $spacing-small;
 }
 </style>

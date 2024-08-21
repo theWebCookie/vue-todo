@@ -32,6 +32,7 @@ export default {
   box-shadow: 0px 38px 12px 0px rgb(120, 120, 120);
   max-height: 300px;
   overflow-y: auto;
+  overflow-x: hidden;
 
   .noTasks {
     padding: $spacing-small;
