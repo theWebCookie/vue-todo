@@ -1,5 +1,5 @@
 <template>
-  <li :class="$style.taskItem">
+  <li :class="[$style.taskItem, task.completed ? $style.taskCompleted : '']">
     <label :for="task.id" :class="$style.taskLabel">
       <InputCheckbox :checked="task.completed" :disabled="false" :id="task.id" />
       <div :class="$style.taskDescription">
@@ -40,6 +40,11 @@ export default {
 <style module lang="scss">
 .taskItem {
   border-bottom: 1px solid #ccc;
+
+  &.taskCompleted {
+    text-decoration: line-through;
+    color: #b1b1b1;
+  }
 
   &:hover {
     background-color: $hover-color;
