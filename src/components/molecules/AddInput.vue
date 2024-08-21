@@ -1,7 +1,7 @@
 <template>
-  <div :class="$style.inputWrapper">
+  <div :class="[$style.inputWrapper, exceedsLimit ? $style.exceededLimit : '']">
     <InputCheckbox :disabled="true" />
-    <TextInput :placeholder="'Add your task'" />
+    <TextInput :placeholder="'Add your task'" @input-exceeds-limit="handleInputExceedsLimit" />
   </div>
 </template>
 
@@ -15,6 +15,16 @@ export default {
     InputCheckbox,
     TextInput,
   },
+  data() {
+    return {
+      exceedsLimit: false,
+    };
+  },
+  methods: {
+    handleInputExceedsLimit(value) {
+      this.exceedsLimit = value;
+    },
+  },
 };
 </script>
 
@@ -26,5 +36,11 @@ export default {
   padding: $spacing-small;
   margin-bottom: $spacing-large;
   border-radius: $border-radius;
+  box-sizing: border-box;
+}
+
+.exceededLimit {
+  border: 1px solid red;
+  background-color: #ffe6e6;
 }
 </style>
