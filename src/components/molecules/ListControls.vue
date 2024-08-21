@@ -4,7 +4,13 @@
       <span>{{ taskCountMessage }}</span>
     </div>
     <div :class="$style.filterButtons">
-      <AppButton v-for="filter in filters" :key="filter.name" :customClass="$style.filterButton" @click="filterTasks(filter.value)">
+      <AppButton
+        v-for="filter in filters"
+        :key="filter.name"
+        :customClass="$style.filterButton"
+        @click="filterTasks(filter.value)"
+        :isActive="currentFilter === filter.value"
+      >
         {{ filter.name }}
       </AppButton>
     </div>
@@ -24,7 +30,7 @@ export default {
     AppButton,
   },
   computed: {
-    ...mapGetters(['tasksLeft']),
+    ...mapGetters(['tasksLeft', 'filter']),
     filters() {
       return [
         { name: 'All', value: 'all' },
@@ -40,6 +46,9 @@ export default {
       } else {
         return `${this.tasksLeft} tasks left`;
       }
+    },
+    currentFilter() {
+      return this.$store.state.filter;
     },
   },
   methods: {

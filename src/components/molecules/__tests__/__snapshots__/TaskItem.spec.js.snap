@@ -24,6 +24,7 @@ exports[`TaskItem.vue renders correctly and matches the snapshot 1`] = `
       </span>
       <app-button-stub
         customclass="deleteButton"
+        isactive="false"
       />
     </div>
   </label>
@@ -54,6 +55,7 @@ exports[`TaskItem.vue renders with checked state 1`] = `
       </span>
       <app-button-stub
         customclass="deleteButton"
+        isactive="false"
       />
     </div>
   </label>

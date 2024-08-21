@@ -42,6 +42,7 @@ exports[`TaskList.vue renders correctly with tasks 1`] = `
         />
         <app-button-stub
           customclass="deleteButton"
+          isactive="false"
         />
       </div>
     </label>
@@ -67,6 +68,7 @@ exports[`TaskList.vue renders correctly with tasks 1`] = `
         />
         <app-button-stub
           customclass="deleteButton"
+          isactive="false"
         />
       </div>
     </label>
