@@ -15,7 +15,7 @@
       </AppButton>
     </div>
     <div :class="$style.clearButton">
-      <AppButton @click="clearCompleted" :customClass="$style.clearButtonStyle"> Clear Completed </AppButton>
+      <AppButton @click="clearCompleted" :customClass="$style.clearButtonStyle" :disabled="!hasCompletedTasks"> Clear Completed </AppButton>
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@ export default {
     AppButton,
   },
   computed: {
-    ...mapGetters(['tasksLeft', 'filter']),
+    ...mapGetters(['tasksLeft', 'filter', 'tasksCompleted']),
     filters() {
       return [
         { name: 'All', value: 'all' },
@@ -49,6 +49,9 @@ export default {
     },
     currentFilter() {
       return this.$store.state.filter;
+    },
+    hasCompletedTasks() {
+      return this.tasksCompleted > 0;
     },
   },
   methods: {
@@ -80,6 +83,16 @@ export default {
 
   .filterButton {
     margin: 0 5px;
+  }
+
+  .clearButtonStyle {
+    &:disabled {
+      cursor: not-allowed;
+
+      &:hover {
+        color: $light-gray-color;
+      }
+    }
   }
 }
 </style>

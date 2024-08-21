@@ -62,6 +62,7 @@ const store = createStore({
       else if (state.filter === 'completed') return state.tasks.filter((task) => task.completed);
     },
     tasksLeft: (state) => state.tasks.filter((task) => !task.completed).length,
+    tasksCompleted: (state) => state.tasks.filter((task) => task.completed).length,
   },
 });
 

@@ -135,4 +135,12 @@ describe('Vuex Store', () => {
     store.commit('addTask', task2);
     expect(store.getters.tasksLeft).toBe(1);
   });
+
+  it('getters - tasksCompleted', () => {
+    const task1 = { id: 15, title: 'Task 10', completed: true };
+    const task2 = { id: 16, title: 'Task 11', completed: false };
+    store.commit('addTask', task1);
+    store.commit('addTask', task2);
+    expect(store.getters.tasksCompleted).toBe(1);
+  });
 });
