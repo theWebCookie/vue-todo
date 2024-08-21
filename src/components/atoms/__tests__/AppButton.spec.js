@@ -25,4 +25,22 @@ describe('AppButton.vue', () => {
     expect(emitted()).toHaveProperty('click');
     expect(emitted().click.length).toBe(2);
   });
+
+  it('applies the active class when isActive is true', () => {
+    const wrapper = shallowMount(AppButton, {
+      propsData: {
+        isActive: true,
+      },
+    });
+    expect(wrapper.classes()).toContain('active');
+  });
+
+  it('does not apply the active class when isActive is false', () => {
+    const wrapper = shallowMount(AppButton, {
+      propsData: {
+        isActive: false,
+      },
+    });
+    expect(wrapper.classes()).not.toContain('active');
+  });
 });
