@@ -15,12 +15,15 @@ exports[`ListControls.vue renders correctly and matches the snapshot 1`] = `
     
     <app-button-stub
       customclass="filterButton"
+      isactive="false"
     />
     <app-button-stub
       customclass="filterButton"
+      isactive="false"
     />
     <app-button-stub
       customclass="filterButton"
+      isactive="false"
     />
     
   </div>
@@ -28,7 +31,9 @@ exports[`ListControls.vue renders correctly and matches the snapshot 1`] = `
     class=""
   >
     <app-button-stub
-      customclass=""
+      customclass="clearButtonStyle"
+      disabled="false"
+      isactive="false"
     />
   </div>
 </div>

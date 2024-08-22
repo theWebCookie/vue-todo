@@ -30,6 +30,10 @@ const store = createStore({
       state.tasks = state.tasks.filter((task) => !task.completed);
       localStorage.setItem('tasks', JSON.stringify(state.tasks));
     },
+    updateTaskOrder(state, tasks) {
+      state.tasks = tasks;
+      localStorage.setItem('tasks', JSON.stringify(state.tasks));
+    },
   },
   actions: {
     addTask({ commit }, task) {
@@ -47,6 +51,9 @@ const store = createStore({
     clearCompletedTasks({ commit }) {
       commit('clearCompletedTasks');
     },
+    updateTaskOrder({ commit }, tasks) {
+      commit('updateTaskOrder', tasks);
+    },
   },
   getters: {
     filteredTasks: (state) => {
@@ -55,6 +62,7 @@ const store = createStore({
       else if (state.filter === 'completed') return state.tasks.filter((task) => task.completed);
     },
     tasksLeft: (state) => state.tasks.filter((task) => !task.completed).length,
+    tasksCompleted: (state) => state.tasks.filter((task) => task.completed).length,
   },
 });
 

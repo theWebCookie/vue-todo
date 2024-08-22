@@ -3,6 +3,7 @@
 exports[`InputCheckbox.vue renders correctly and matches the snapshot 1`] = `
 <input
   class="checkBox"
+  id="1"
   type="checkbox"
 />
 `;
@@ -11,6 +12,7 @@ exports[`InputCheckbox.vue renders with checked state 1`] = `
 <input
   checked=""
   class="checkBox"
+  id="1"
   type="checkbox"
 />
 `;
@@ -19,6 +21,7 @@ exports[`InputCheckbox.vue renders with disabled state 1`] = `
 <input
   class="checkBox"
   disabled=""
+  id="1"
   type="checkbox"
 />
 `;

@@ -1,5 +1,5 @@
 <template>
-  <input type="checkbox" :disabled="disabled" :class="$style.checkBox" @change="toggleTask(id)" :checked="checked" />
+  <input type="checkbox" :disabled="disabled" :class="$style.checkBox" @change="toggleTask(id)" :checked="checked" :id="id" />
 </template>
 
 <script>

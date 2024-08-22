@@ -1,5 +1,5 @@
 <template>
-  <button :class="[$style.button, customClass]" @click="handleClick">
+  <button :class="[$style.button, customClass, { [$style.active]: isActive }]" @click="handleClick">
     <slot></slot>
   </button>
 </template>
@@ -11,6 +11,10 @@ export default {
     customClass: {
       type: String,
       default: '',
+    },
+    isActive: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {
@@ -26,7 +30,8 @@ export default {
   all: unset;
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &.active {
     color: $primary-color;
   }
 }

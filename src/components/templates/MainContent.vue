@@ -21,6 +21,7 @@
     <AddInput />
     <TaskList />
     <ListControls />
+    <p :class="$style.info">Hold then Drag & Drop to reorder</p>
   </div>
 </template>
 
@@ -47,6 +48,13 @@ export default {
   transform: translateX(-50%);
   max-width: 450px;
   width: 100%;
+
+  .info {
+    text-align: center;
+    color: $light-gray-color;
+    margin-top: $spacing-large + 20px;
+    max-width: 450px;
+  }
 
   .title {
     display: flex;

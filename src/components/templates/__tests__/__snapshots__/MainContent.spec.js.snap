@@ -32,5 +32,10 @@ exports[`MainContent.vue renders correctly and matches the snapshot 1`] = `
   <add-input-stub />
   <task-list-stub />
   <list-controls-stub />
+  <p
+    class="info"
+  >
+    Hold then Drag & Drop to reorder
+  </p>
 </div>
 `;

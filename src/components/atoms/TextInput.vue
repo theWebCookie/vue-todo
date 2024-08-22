@@ -14,10 +14,18 @@ export default {
   data() {
     return {
       inputValue: '',
+      inputExceedsLimit: false,
     };
+  },
+  watch: {
+    inputValue(newValue) {
+      this.inputExceedsLimit = newValue.length > 150;
+      this.$emit('input-exceeds-limit', this.inputExceedsLimit);
+    },
   },
   methods: {
     addTask() {
+      if (this.inputExceedsLimit) return;
       if (this.inputValue.trim()) {
         const task = {
           id: Date.now(),

@@ -4,6 +4,7 @@ import { createStore } from 'vuex';
 import ListControls from '../ListControls.vue';
 import { jest } from '@jest/globals';
 import { render, fireEvent } from '@testing-library/vue';
+import '@testing-library/jest-dom';
 
 const styles = {
   controls: 'controls',
@@ -28,6 +29,7 @@ describe('ListControls.vue', () => {
 
     getters = {
       tasksLeft: () => numberOfTasksLeft,
+      tasksCompleted: () => 3,
     };
 
     store = createStore({
@@ -85,5 +87,16 @@ describe('ListControls.vue', () => {
     const clearButton = getByText('Clear Completed');
     await fireEvent.click(clearButton);
     expect(actions.clearCompletedTasks).toHaveBeenCalled();
+  });
+
+  it('enables the Clear Completed button when there are completed tasks', async () => {
+    const { getByText } = render(ListControls, {
+      global: {
+        plugins: [store],
+      },
+    });
+
+    const clearButton = getByText('Clear Completed');
+    expect(clearButton).not.toBeDisabled();
   });
 });

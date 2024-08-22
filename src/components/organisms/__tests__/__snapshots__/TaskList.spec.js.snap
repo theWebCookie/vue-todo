@@ -6,6 +6,7 @@ exports[`TaskList.vue renders correctly with no tasks 1`] = `
 >
   <li
     class="noTasks"
+    draggable="false"
   >
     No tasks yet
   </li>
@@ -20,12 +21,58 @@ exports[`TaskList.vue renders correctly with tasks 1`] = `
 >
   <!--v-if-->
   
-  <task-item-stub
-    task="[object Object]"
-  />
-  <task-item-stub
-    task="[object Object]"
-  />
+  <li
+    class="taskItem"
+    draggable="true"
+  >
+    <label
+      class="taskLabel"
+      for="1"
+    >
+      <input-checkbox-stub
+        checked="false"
+        disabled="false"
+        id="1"
+      />
+      <div
+        class="taskDescription"
+      >
+        <span
+          class="taskTitle"
+        />
+        <app-button-stub
+          customclass="deleteButton"
+          isactive="false"
+        />
+      </div>
+    </label>
+  </li>
+  <li
+    class="taskItem taskCompleted"
+    draggable="true"
+  >
+    <label
+      class="taskLabel"
+      for="2"
+    >
+      <input-checkbox-stub
+        checked="true"
+        disabled="false"
+        id="2"
+      />
+      <div
+        class="taskDescription"
+      >
+        <span
+          class="taskTitle"
+        />
+        <app-button-stub
+          customclass="deleteButton"
+          isactive="false"
+        />
+      </div>
+    </label>
+  </li>
   
 </ul>
 `;
