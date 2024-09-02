@@ -31,12 +31,14 @@ export default {
 <style module lang="scss">
 .inputWrapper {
   display: flex;
-  gap: $spacing-small;
   background-color: $white-color;
   padding: $spacing-small;
+  padding-left: 0;
   margin-bottom: $spacing-large;
   border-radius: $border-radius;
   box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .exceededLimit {
