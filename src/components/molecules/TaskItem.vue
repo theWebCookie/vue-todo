@@ -1,12 +1,20 @@
 <template>
-  <li :class="[$style.taskItem, task.completed ? $style.taskCompleted : '']" draggable="true">
-    <label :for="task.id" :class="$style.taskLabel">
-      <InputCheckbox :checked="task.completed" :disabled="false" :id="task.id" />
+  <li
+    :class="[$style.taskItem, task.completed ? $style.taskCompleted : '']"
+    :draggable="true"
+    @dragstart="onDragStart"
+    @dragover="onDragOver"
+    @drop="onDrop"
+    @dragend="onDragEnd"
+    :data-id="task.id"
+  >
+    <div :class="$style.taskWrapper">
+      <InputCheckbox :checked="task.completed" :disabled="false" :id="task.id" @change="toggleCheckbox" />
       <div :class="$style.taskDescription">
         <span :class="$style.taskTitle">{{ task.title }}</span>
         <AppButton :customClass="$style.deleteButton" @click="removeTask(task.id)"> X </AppButton>
       </div>
-    </label>
+    </div>
   </li>
 </template>
 
@@ -33,6 +41,17 @@ export default {
     toggleCheckbox() {
       this.$store.dispatch('toggleTask', this.task.id);
     },
+    onDragStart(event) {
+      event.dataTransfer.setData('text/plain', this.task.id);
+    },
+    onDragOver(event) {
+      event.preventDefault();
+    },
+    onDrop(event) {
+      event.preventDefault();
+      const draggedTaskId = event.dataTransfer.getData('text/plain');
+      this.$emit('drop', draggedTaskId, this.task.id);
+    },
   },
 };
 </script>
@@ -57,17 +76,18 @@ export default {
     }
   }
 
-  .taskLabel {
+  .taskWrapper {
     display: flex;
-    gap: $spacing-small;
-    padding: $spacing-medium;
-    cursor: pointer;
+    align-items: center;
   }
 
   .taskDescription {
-    width: 100%;
+    flex: 1;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: $spacing-medium;
+    cursor: grab;
   }
 
   .taskTitle {
@@ -76,10 +96,10 @@ export default {
     white-space: normal;
     max-width: 350px;
   }
-}
 
-.deleteButton {
-  visibility: hidden;
-  margin-right: $spacing-small;
+  .deleteButton {
+    visibility: hidden;
+    margin-right: $spacing-small;
+  }
 }
 </style>

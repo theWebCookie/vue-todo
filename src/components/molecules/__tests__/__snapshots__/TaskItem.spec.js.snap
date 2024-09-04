@@ -3,11 +3,11 @@
 exports[`TaskItem.vue renders correctly and matches the snapshot 1`] = `
 <li
   class="taskItem"
+  data-id="1"
   draggable="true"
 >
-  <label
-    class="taskLabel"
-    for="1"
+  <div
+    class="taskWrapper"
   >
     <input-checkbox-stub
       checked="false"
@@ -27,18 +27,18 @@ exports[`TaskItem.vue renders correctly and matches the snapshot 1`] = `
         isactive="false"
       />
     </div>
-  </label>
+  </div>
 </li>
 `;
 
 exports[`TaskItem.vue renders with checked state 1`] = `
 <li
   class="taskItem taskCompleted"
+  data-id="1"
   draggable="true"
 >
-  <label
-    class="taskLabel"
-    for="1"
+  <div
+    class="taskWrapper"
   >
     <input-checkbox-stub
       checked="true"
@@ -58,6 +58,6 @@ exports[`TaskItem.vue renders with checked state 1`] = `
         isactive="false"
       />
     </div>
-  </label>
+  </div>
 </li>
 `;

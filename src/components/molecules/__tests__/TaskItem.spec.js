@@ -30,8 +30,8 @@ describe('TaskItem.vue', () => {
 
     expect(wrapper.element).toMatchSnapshot();
     expect(wrapper.classes()).toContain(styles.taskItem);
-    const label = wrapper.find('label');
-    expect(label.text()).toBe('Task 1');
+    const span = wrapper.find('span');
+    expect(span.text()).toBe('Task 1');
   });
 
   it('renders with checked state', () => {

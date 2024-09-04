@@ -42,7 +42,7 @@ export default {
 
 <style module lang="scss">
 .searchBar {
-  width: 100%;
+  width: 90%;
   padding: $spacing-small 0;
   font-size: 16px;
   border: none;

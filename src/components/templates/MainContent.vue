@@ -21,7 +21,7 @@
     <AddInput />
     <TaskList />
     <ListControls />
-    <p :class="$style.info">Hold then Drag & Drop to reorder</p>
+    <p :class="$style.info">Drag & Drop to reorder</p>
   </div>
 </template>
 

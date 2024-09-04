@@ -23,11 +23,11 @@ exports[`TaskList.vue renders correctly with tasks 1`] = `
   
   <li
     class="taskItem"
+    data-id="1"
     draggable="true"
   >
-    <label
-      class="taskLabel"
-      for="1"
+    <div
+      class="taskWrapper"
     >
       <input-checkbox-stub
         checked="false"
@@ -45,15 +45,15 @@ exports[`TaskList.vue renders correctly with tasks 1`] = `
           isactive="false"
         />
       </div>
-    </label>
+    </div>
   </li>
   <li
     class="taskItem taskCompleted"
+    data-id="2"
     draggable="true"
   >
-    <label
-      class="taskLabel"
-      for="2"
+    <div
+      class="taskWrapper"
     >
       <input-checkbox-stub
         checked="true"
@@ -71,7 +71,7 @@ exports[`TaskList.vue renders correctly with tasks 1`] = `
           isactive="false"
         />
       </div>
-    </label>
+    </div>
   </li>
   
 </ul>

@@ -12,14 +12,20 @@ const styles = {
 describe('TaskList.vue', () => {
   let store;
   let getters;
+  let actions;
 
   it('renders correctly with no tasks', () => {
     getters = {
       filteredTasks: () => [],
     };
 
+    actions = {
+      updateTaskOrder: jest.fn(),
+    };
+
     store = createStore({
       getters,
+      actions,
     });
 
     const wrapper = shallowMount(TaskList, {
@@ -70,16 +76,51 @@ describe('TaskList.vue', () => {
     expect(wrapper.findAllComponents(TaskItem)).toHaveLength(2);
   });
 
-  it('initializes sortable on mount', () => {
-    const spy = jest.spyOn(TaskList.methods, 'initializeDragAndDrop');
-    shallowMount(TaskList, {
+  it('calls onDrop method and updates task order', () => {
+    getters.filteredTasks = () => [
+      {
+        id: 1,
+        text: 'Task 1',
+        completed: false,
+      },
+      {
+        id: 2,
+        text: 'Task 2',
+        completed: true,
+      },
+    ];
+
+    store = createStore({
+      getters,
+      actions,
+    });
+
+    const wrapper = shallowMount(TaskList, {
       global: {
         plugins: [store],
         mocks: {
           $style: styles,
         },
+        stubs: {
+          TaskItem,
+        },
       },
     });
-    expect(spy).toHaveBeenCalled();
+
+    wrapper.vm.onDrop(1, 2);
+
+    expect(actions.updateTaskOrder).toHaveBeenCalled();
+    expect(actions.updateTaskOrder).toHaveBeenCalledWith(expect.any(Object), [
+      {
+        id: 2,
+        text: 'Task 2',
+        completed: true,
+      },
+      {
+        id: 1,
+        text: 'Task 1',
+        completed: false,
+      },
+    ]);
   });
 });
